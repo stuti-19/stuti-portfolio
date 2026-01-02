@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stuti Saxena | Cybersecurity Portfolio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+
+:root{
+    --bg-dark:#101720;
+    --bg-card:#1a2332;
+    --primary:#D2DEEA;
+    --secondary:#a8c0d8;
+    --muted:#b8c5d6;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:var(--bg-dark);
+    color:white;
+    line-height:1.6;
+}
+
+/* ================= NAVBAR ================= */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(16,23,32,0.95);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid rgba(210,222,234,0.1);
+}
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    padding:1rem 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.nav-logo{
+    color:var(--primary);
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.nav-links{
+    display:flex;
+}
+
+.nav-links a{
+    color:var(--muted);
+    margin-left:1.5rem;
+    text-decoration:none;
+    font-size:0.95rem;
+}
+.nav-links a:hover{ color:var(--primary); }
+
+/* Hamburger */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+.hamburger span{
+    width:25px;
+    height:3px;
+    background:var(--primary);
+    margin:4px 0;
+    transition:0.3s;
+}
+
+@media(max-width:768px){
+    .hamburger{ display:flex; }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        right:20px;
+        background:var(--bg-card);
+        flex-direction:column;
+        padding:1rem;
+        border-radius:10px;
+        display:none;
+    }
+
+    .nav-links a{
+        margin:0.7rem 0;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+}
+
+/* ================= SCROLL BAR ================= */
+#scrollProgress{
+    position:fixed;
+    top:0; left:0;
+    height:3px;
+    width:0%;
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    z-index:2000;
+}
+
+/* ================= HERO ================= */
+header{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding-top:80px;
+}
+
+.hero-content h1{
+    font-size:3.8rem;
+    color:var(--primary);
+}
+.hero-content h2{
+    color:var(--muted);
+    margin-top:1rem;
+}
+.hero-content p{
+    max-width:800px;
+    margin:2rem auto;
+    color:var(--muted);
+}
+
+/* Terminal */
+.terminal{
+    font-family:monospace;
+    color:var(--secondary);
+    margin:1rem 0;
+}
+.cursor{
+    animation:blink 1s infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+/* ================= LAYOUT ================= */
+section{ padding:5rem 0; }
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+}
+.section-title{
+    text-align:center;
+    font-size:2.3rem;
+    margin-bottom:3rem;
+    color:var(--primary);
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:2rem;
+}
+.card{
+    background:var(--bg-card);
+    padding:2rem;
+    border-radius:15px;
+    border:1px solid rgba(210,222,234,0.1);
+}
+
+/* Scroll Reveal */
+.scroll-reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s ease;
+}
+.scroll-reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Download Resume */
+.download-resume{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    z-index:1000;
+}
+.download-btn{
+    background:var(--primary);
+    color:var(--bg-dark);
+    padding:1rem 1.5rem;
+    border-radius:50px;
+    font-weight:600;
+    text-decoration:none;
+}
+
+/* Contact */
+.contact-content{
+    max-width:600px;
+    margin:auto;
+    text-align:center;
+}
+.contact-item{
+    margin-top:1rem;
+}
+.contact-item a{
+    color:var(--primary);
+    text-decoration:none;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:2rem;
+    background:var(--bg-card);
+    color:var(--muted);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .hero-content h1{font-size:2.5rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="scrollProgress"></div>
+
+<!-- ================= NAV ================= -->
+<nav>
+<div class="nav-container">
+<div class="nav-logo">STUTI</div>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#resume">Resume</a>
+<a href="#projects">Projects</a>
+<a href="#hobbies">Hobbies</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<!-- Resume Anchor -->
+<section id="resume"></section>
+
+<!-- Download Resume -->
+<div class="download-resume">
+<a href="assets/Stuti_Saxena_Resume.pdf" download class="download-btn">
+<i class="fas fa-download"></i> Resume
+</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header id="home">
+<div class="hero-content scroll-reveal">
+<h1 style="font-size:2.5rem;">Hello, Everyone.</h1>
+<h2>This is Stuti</h2>
+<h1>Stuti Saxena</h1>
+
+<div class="terminal">
+<span id="terminal-text"></span><span class="cursor">█</span>
+</div>
+
+</p>
+</div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+<div class="container">
+<h2 class="section-title">About Me</h2>
+<div class="card scroll-reveal">
+<p>
+I am a final-year Information Technology undergraduate with a strong focus on
+cybersecurity, digital forensics, and penetration testing. I am deeply interested
+in understanding real-world attack techniques and building effective detection
+and response mechanisms.
+</p>
+<p style="margin-top:1rem;">
+Through hands-on internships with law enforcement and industry, I have worked on
+live cybercrime investigations, threat intelligence analysis, and security automation
+projects. I enjoy continuous learning and applying structured problem-solving
+to complex security challenges.
+</p>
+</div>
+</div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+<div class="container">
+<h2 class="section-title">Technical Skills</h2>
+<div class="grid">
+<div class="card scroll-reveal"><b>Security Operations</b><br>SIEM, Incident Response, Threat Intelligence</div>
+<div class="card scroll-reveal"><b>Penetration Testing</b><br>Vulnerability Assessment, Red Team Operations</div>
+<div class="card scroll-reveal"><b>Digital Forensics</b><br>Malware Analysis, Memory & Disk Forensics</div>
+<div class="card scroll-reveal"><b>Programming</b><br>Python, Bash, SQL, Automation</div>
+<div class="card scroll-reveal"><b>Tools</b><br>Nmap, Metasploit, Burp Suite, Wireshark</div>
+<div class="card scroll-reveal"><b>Frameworks</b><br>MITRE ATT&CK, CVE/CVSS, STIX/TAXII</div>
+</div>
+</div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+<div class="container">
+<h2 class="section-title">Professional Experience</h2>
+<div class="grid">
+<div class="card scroll-reveal">
+<b>Digital Forensics Intern</b><br>
+Slytherin EduTech Pvt. Ltd<br>
+<ul>
+<li>Investigated malware and network artifacts</li>
+<li>Applied MITRE ATT&CK techniques</li>
+</ul>
+</div>
+
+<div class="card scroll-reveal">
+<b>Cyber Security Intern</b><br>
+Madhya Pradesh (HQ) Cyber Cell<br>
+<ul>
+<li>Worked on live cybercrime investigations</li>
+<li>Conducted forensic evidence analysis</li>
+</ul>
+</div>
+
+<div class="card scroll-reveal">
+<b>AI & Cloud Intern</b><br>
+IBM SkillsBuild<br>
+<ul>
+<li>Built secure AI workflows</li>
+<li>Implemented NLP-based automation</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+<div class="container">
+<h2 class="section-title">Projects</h2>
+<div class="grid">
+<div class="card scroll-reveal">
+<b>Red Team Recon & Exploitation Mapper</b>
+<p>Automated reconnaissance and CVSS-based vulnerability prioritization for penetration testing.</p>
+</div>
+<div class="card scroll-reveal">
+<b>Adaptive Deception Honeypot Platform</b>
+<p>Detected and analyzed 500+ simulated attacks with automated threat intelligence.</p>
+</div>
+<div class="card scroll-reveal">
+<b>Dark Web Marketplace Monitor</b>
+<p>OSINT system for monitoring illicit marketplaces using Tor and NLP.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+<div class="container">
+<h2 class="section-title">Education</h2>
+<div class="grid">
+<div class="card scroll-reveal">
+<b>B.Tech – Information Technology</b><br>
+UIT RGPV, Bhopal<br>Expected 2026
+</div>
+<div class="card scroll-reveal">
+<b>Higher Secondary (PCM + Python)</b><br>
+Carmel Convent School, Bhopal
+</div>
+</div>
+</div>
+</section>
+
+<!--================= CERTIFICATIONS ================= -->
+
+<section>
+<div class="container">
+<h2 class="section-title">Certifications</h2>
+<div class="grid">
+<div class="card scroll-reveal">CEH v13 AI-Integrated</div>
+<div class="card scroll-reveal">Google Cybersecurity Professional</div>
+<div class="card scroll-reveal">Android Bug Bounty</div>
+<div class="card scroll-reveal">Dark Web & Cryptocurrency</div>
+</div>
+</div>
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<section>
+<div class="container">
+<h2 class="section-title">Achievements</h2>
+<div class="grid">
+<div class="card scroll-reveal">Captured all flags in Indian Army Terrier Cyber Quest CTF</div>
+<div class="card scroll-reveal">Assisted MP Cyber Cell in dark web threat classification</div>
+<div class="card scroll-reveal">Developed honeypot detecting 500+ attacks</div>
+</div>
+</div>
+</section>
+
+
+<!-- ================= HOBBIES ================= -->
+<section>
+<div class="container">
+<h2 class="section-title">Interests & Hobbies</h2>
+<div class="grid">
+<div class="card scroll-reveal">
+<b>Reading</b>
+<p> Beyond the screen, you’ll find me lost in a book. My love for reading fuels my creativity and analytical thinking, allowing me to draw inspiration from diverse narratives and complex ideas. </p>
+</div>
+<div class="card scroll-reveal">
+<b>Sports</b>
+<p>Whether it’s the precision of fencing or the grit of competitive swimming, my background in sports has instilled in me a relentless drive for excellence and a 'one more lap' mindset.</p>
+</div>
+<div class="card scroll-reveal">
+<b>Dance</b>
+<p> Classical dance has been a cornerstone of my personal growth. I am a trained Bharatanatyam dancer, having completed six years of formal certification, which has taught me the art of storytelling through meticulous technique and focus.</p>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+<div class="container">
+<div class="contact-content scroll-reveal">
+<h2 class="section-title">Contact Me</h2>
+
+<div class="grid" style="grid-template-columns: repeat(2, 1fr); margin-top:2rem;">
+
+  <div class="card scroll-reveal" style="text-align:center;">
+    <a href="mailto:stutisaxena337@gmail.com" aria-label="Email">
+      <i class="fas fa-envelope" style="font-size:2.8rem; color:var(--primary);"></i>
+    </a>
+  </div>
+
+  <div class="card scroll-reveal" style="text-align:center;">
+    <a href="https://www.linkedin.com/in/stuti-19-saxena" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin" style="font-size:2.8rem; color:var(--primary);"></i>
+    </a>
+  </div>
+
+  <div class="card scroll-reveal" style="text-align:center;">
+    <a href="https://github.com/stuti-19" target="_blank" aria-label="GitHub">
+      <i class="fab fa-github" style="font-size:2.8rem; color:var(--primary);"></i>
+    </a>
+  </div>
+
+  <div class="card scroll-reveal" style="text-align:center;">
+    <a href="https://tryhackme.com/p/stutisaxena024" target="_blank" aria-label="TryHackMe">
+      <i class="fas fa-terminal" style="font-size:2.8rem; color:var(--primary);"></i>
+    </a>
+  </div>
+
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+Stuti Saxena · Portfolio
+</footer>
+
+<script>
+// Hamburger
+const hamburger=document.getElementById("hamburger");
+const navLinks=document.getElementById("navLinks");
+hamburger.addEventListener("click",()=>navLinks.classList.toggle("active"));
+
+// Terminal typing
+const text="Penetration testing | Threat Intelligence | Red Teamer";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("terminal-text").innerHTML+=text.charAt(i++);
+setTimeout(type,60);
+}}
+type();
+
+// Scroll progress
+window.addEventListener("scroll",()=>{
+const h=document.documentElement;
+document.getElementById("scrollProgress").style.width=
+(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+"%";
+});
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>e.isIntersecting&&e.target.classList.add("active"));
+},{threshold:0.15});
+document.querySelectorAll(".scroll-reveal").forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
